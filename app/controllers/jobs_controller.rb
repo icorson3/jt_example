@@ -1,7 +1,10 @@
 class JobsController < ApplicationController
   def index
     if params[:sort]
-      @jobs = Job.where(city: params[:sort])
+      @jobs = Job.order(:city)
+      render :"sort/index"
+    elsif params[:location]
+      @jobs = Job.where(city: params[:location])
       render :"sort/index"
     else
       @company = Company.find(params[:company_id])
