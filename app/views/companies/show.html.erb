@@ -1,5 +1,9 @@
 All Jobs for <strong><%= @company.name %></strong>
 
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+
+  <% @company.jobs.each do |job| %>
+  <div class="jobs">
+    <ul><%= job.title %></ul>
+    <%= link_to "Delete Job", company_job_path(@company, job), method: :delete %>
+  </div>
+  <% end %>

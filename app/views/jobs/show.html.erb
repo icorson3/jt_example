@@ -11,3 +11,26 @@ City: <%= @job.city %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+<br>
+
+Category: <%= link_to @job.category.title, category_path(@job.category) %>
+
+<br>
+
+Comments:
+  <% @job.comments.newest_first.each do |comment| %>
+  <div class="comments">
+    <%= comment.content %>
+  </div>
+  <% end %>
+
+<br>
+
+Enter New Comment for this Job:
+
+<%= form_for [@job, @comment] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>

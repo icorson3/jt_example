@@ -1,5 +1,27 @@
 All Jobs for <strong><%= @company.name %></strong>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<div class="jobs">
+  <% @jobs.each do |job| %>
+    <ul><%= job.title %> at <%= job.company.name %></ul>
+    <%= link_to "Delete Job", company_job_path(@company, job), method: :delete %>
+  <% end %>
+</div>
+
+<div class="contacts">
+   <h2>Add New Contact:</h2>
+    <%= form_for [@company, @contact] do |f| %>
+      <%= f.label :full_name %>
+      <%= f.text_field :full_name %>
+      <%= f.label :position %>
+      <%= f.text_field :position %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.submit %>
+    <% end %>
+
+    <% @company.contacts.each do |contact| %>
+      <%= contact.full_name %>
+      <%= contact.position %>
+      <%= contact.email %>
+    <% end %>
+</div>
