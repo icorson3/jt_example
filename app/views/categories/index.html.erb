@@ -1,0 +1,7 @@
+<div class="categories">
+<% @categories.each do |category| %>
+  <%= category.title %>
+  <%= link_to "Edit Category", edit_category_path(category) %>
+  <%= link_to "Delete Category", category_path(category), method: :delete %>
+<% end %>
+</div>

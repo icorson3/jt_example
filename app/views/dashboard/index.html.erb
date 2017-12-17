@@ -1,0 +1,15 @@
+<% @jobs.level_of_interest_count.each do |level_of_interest, count| %>
+  Level of Interest: <%= level_of_interest %>, Count: <%= count %>
+<% end %>
+
+<% @jobs.count_by_city.each do |city, count| %>
+  <%= link_to "#{city}: #{count}", "/jobs?location=#{city}"  %>
+<% end %>
+
+
+<div class="top-three">
+  <% @companies.top_three_by_interest.each do |company| %>
+    <%= company.name %>
+    Average Level of Interest: <%= company.average_level_of_interest %>
+  <% end %>
+</div>
